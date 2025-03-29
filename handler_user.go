@@ -35,7 +35,7 @@ func handlerRegister(s *state, cmd command) error {
 }
 
 func handlerLogin(s *state, cmd command) error {
-	if len(cmd.Args) == 0 {
+	if len(cmd.Args) != 1 {
 		return fmt.Errorf("usage: %s <name>", cmd.Name)
 	}
 	name := cmd.Args[0]
@@ -53,7 +53,7 @@ func handlerLogin(s *state, cmd command) error {
 	return nil
 }
 
-func handlerUsers(s *state, cmd command) error {
+func handlerListUsers(s *state, cmd command) error {
 	users, err := s.db.GetUsers(context.Background())
 	if err != nil {
 		return fmt.Errorf("couldn't list users: %w", err)

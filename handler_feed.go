@@ -9,20 +9,15 @@ import (
 	"github.com/kei-the-gae/gator/internal/database"
 )
 
-func handlerAddFeed(s *state, cmd command) error {
-	user, err := s.db.GetUser(context.Background(), s.cfg.CurrentUserName)
-	if err != nil {
-		return fmt.Errorf("couldn't get user: %w", err)
-	}
+func handlerAddFeed(s *state, cmd command, user database.User) error {
 
-	if len(cmd.Args) < 2 {
+	if len(cmd.Args) != 2 {
 		return fmt.Errorf("usage: %s <name> <url>", cmd.Name)
 	}
 
 	name := cmd.Args[0]
 	url := cmd.Args[1]
 
-	// Add the feed to the database
 	feed, err := s.db.CreateFeed(context.Background(), database.CreateFeedParams{
 		ID:        uuid.New(),
 		CreatedAt: time.Now(),
@@ -56,7 +51,11 @@ func handlerAddFeed(s *state, cmd command) error {
 	return nil
 }
 
-func handlerFeeds(s *state, cmd command) error {
+func handlerListFeeds(s *state, cmd command) error {
+	if len(cmd.Args) != 0 {
+		return fmt.Errorf("usage: %s", cmd.Name)
+	}
+
 	feeds, err := s.db.GetFeeds(context.Background())
 	if err != nil {
 		return fmt.Errorf("couldn't get feeds: %w", err)
