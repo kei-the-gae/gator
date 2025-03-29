@@ -1,6 +1,6 @@
 # Gator
 
-This is a [guided project] (https://www.boot.dev/courses/build-blog-aggregator-golang) I completed as a part of the Boot.dev back-end developer curriculum. This is an RSS feed aggregator that allows users to subscribe to various RSS feeds, view the latest articles from those feeds, and manage their subscriptions. The project focuses on practicing SQL queries and database design.
+This is a [guided project](https://www.boot.dev/courses/build-blog-aggregator-golang) I completed as a part of the Boot.dev back-end developer curriculum. This is an RSS feed aggregator that allows users to subscribe to various RSS feeds, view the latest articles from those feeds, and manage their subscriptions. The project focuses on practicing SQL queries and database design.
 
 [![golang](https://badgen.net/badge/go/1.24.1/cyan?icon=https://go.dev/blog/go-brand/Go-Logo/SVG/Go-Logo_LightBlue.svg)](https://go.dev/)
 
